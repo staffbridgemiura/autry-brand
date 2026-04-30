@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AUTRY オートリー — ブランド詳細</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0a0e1a;--off:#f5f2ec;--cream:#ede9df;
+  --gold:#c8a96e;--red:#c0392b;--mid:#6b6860;
+  --border:rgba(200,169,110,0.22);
+}
+html{scroll-behavior:smooth}
+body{background:var(--off);font-family:'Barlow',sans-serif;color:var(--navy);max-width:680px;margin:0 auto}
+
+/* HERO */
+.hero{background:var(--navy);padding:3.5rem 2rem 2.5rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-60px;right:-60px;width:300px;height:300px;border-radius:50%;border:1px solid rgba(200,169,110,0.1)}
+.hero::after{content:'';position:absolute;bottom:-80px;left:-40px;width:220px;height:220px;border-radius:50%;border:1px solid rgba(200,169,110,0.07)}
+.hero-eyebrow{font-size:10px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;font-weight:500;margin-bottom:1rem}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:300;color:#fff;line-height:1;letter-spacing:-1px;margin-bottom:.3rem}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero-sub{font-size:11px;color:rgba(255,255,255,.35);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:1.5rem;font-weight:300}
+.flag-row{display:flex;align-items:center;gap:8px;margin-bottom:1.5rem}
+.flag{display:flex;flex-direction:column;width:30px;height:18px;border-radius:2px;overflow:hidden;flex-shrink:0}
+.fs{height:3px}.r{background:var(--red)}.w{background:#fff}
+.flag-label{font-size:11px;color:rgba(255,255,255,.4);letter-spacing:1px}
+.hero-lead{font-size:14px;color:rgba(255,255,255,.65);line-height:1.9;font-weight:300;max-width:480px}
+
+/* NAV */
+.sec-nav{background:#fff;border-bottom:1px solid var(--border);padding:0 2rem;display:flex;gap:0;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;position:sticky;top:0;z-index:100}
+.sec-nav::-webkit-scrollbar{display:none}
+.sec-nav-item{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);padding:1rem .9rem;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;font-weight:500;transition:color .2s,border-color .2s;flex-shrink:0}
+.sec-nav-item.active{color:var(--navy);border-bottom-color:var(--gold)}
+.sec-nav-item:hover{color:var(--navy)}
+
+/* ACCORDION */
+.accordion{border-bottom:1px solid var(--border)}
+.acc-trigger{display:flex;align-items:center;justify-content:space-between;padding:1.4rem 2rem;cursor:pointer;background:transparent;border:none;width:100%;text-align:left;transition:background .15s}
+.acc-trigger:hover{background:rgba(200,169,110,.05)}
+.acc-trigger.open{background:rgba(200,169,110,.04)}
+.acc-left{display:flex;align-items:center;gap:1rem}
+.acc-num{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;color:var(--gold);min-width:24px}
+.acc-title{font-size:14px;font-weight:600;color:var(--navy);letter-spacing:.3px}
+.acc-sub{font-size:11px;color:var(--mid);font-weight:300;margin-top:2px}
+.acc-arrow{width:20px;height:20px;flex-shrink:0;transition:transform .3s}
+.acc-arrow svg{width:20px;height:20px;stroke:var(--gold);fill:none;stroke-width:1.5}
+.acc-trigger.open .acc-arrow{transform:rotate(180deg)}
+.acc-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.acc-body.open{max-height:3000px}
+.acc-inner{padding:0 2rem 2rem;border-top:1px solid var(--border)}
+
+/* CONTENT */
+.body-text{font-size:14px;line-height:1.9;color:#4a4842;font-weight:300;margin-bottom:1rem}
+.body-text:last-child{margin-bottom:0}
+.divider{width:32px;height:1px;background:var(--gold);margin:1rem 0}
+
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin:1.2rem 0}
+.stat-box{background:var(--off);padding:1rem;text-align:center}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--navy);line-height:1}
+.stat-label{font-size:10px;color:var(--mid);letter-spacing:1px;margin-top:3px;font-weight:400}
+
+.timeline{position:relative;padding:.5rem 0}
+.timeline::before{content:'';position:absolute;left:14px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--gold) 10%,var(--gold) 90%,transparent)}
+.tl-item{display:flex;gap:1.2rem;margin-bottom:1.5rem;padding-left:.3rem}
+.tl-dot{width:11px;height:11px;border-radius:50%;border:2px solid var(--gold);background:var(--off);flex-shrink:0;margin-top:5px;position:relative;z-index:1;margin-left:9px}
+.tl-dot.now{background:var(--gold)}
+.tl-year{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:var(--gold);min-width:46px;line-height:1.1}
+.tl-content h4{font-size:13px;font-weight:600;color:var(--navy);margin-bottom:3px}
+.tl-content p{font-size:12px;color:var(--mid);line-height:1.65;font-weight:300}
+
+.charm-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:1rem 0}
+.charm-card{background:var(--cream);padding:1.1rem}
+.charm-card h4{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:400;color:var(--navy);margin-bottom:.4rem}
+.charm-card p{font-size:12px;color:var(--mid);line-height:1.65;font-weight:300}
+.charm-icon{width:28px;height:28px;background:var(--navy);display:flex;align-items:center;justify-content:center;margin-bottom:.7rem}
+.charm-icon svg{width:14px;height:14px;fill:var(--gold)}
+
+.item-list{display:flex;flex-direction:column;gap:8px;margin:1rem 0}
+.item-row{background:#fff;border:1px solid var(--border);padding:1rem 1.2rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;transition:border-color .2s}
+.item-row:hover{border-color:var(--gold)}
+.item-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;color:var(--navy)}
+.item-desc{font-size:11px;color:var(--mid);letter-spacing:1px;text-transform:uppercase;margin-top:2px}
+.item-price{font-size:13px;color:var(--gold);font-weight:500;flex-shrink:0}
+
+.celeb-tags{display:flex;flex-wrap:wrap;gap:6px;margin:1rem 0}
+.ctag{border:1px solid var(--border);color:var(--mid);font-size:11px;padding:5px 12px;letter-spacing:.5px}
+.ctag.hl{border-color:var(--gold);color:var(--navy);font-weight:500}
+
+.job-header-box{background:var(--navy);padding:1.3rem 1.5rem;margin:1.2rem 0}
+.job-badge{display:inline-block;font-size:9px;background:var(--gold);color:var(--navy);padding:3px 10px;letter-spacing:2px;font-weight:600;margin-bottom:.6rem}
+.job-title-txt{font-size:15px;font-weight:600;color:#fff;line-height:1.4}
+.job-sub{font-size:11px;color:rgba(255,255,255,.45);margin-top:4px;letter-spacing:.5px}
+
+.detail-table{width:100%;border-collapse:collapse;margin:1rem 0}
+.detail-table tr{border-bottom:1px solid var(--border)}
+.detail-table td{padding:.75rem .4rem;font-size:13px;vertical-align:top}
+.dt-key{color:var(--mid);font-weight:400;width:84px;font-size:11px;padding-top:.9rem!important;letter-spacing:.3px}
+.dt-val{color:var(--navy);font-weight:400;line-height:1.7}
+.dt-val strong{color:var(--red)}
+
+.campaign-box{background:var(--navy);border-left:2px solid var(--gold);padding:1.2rem 1.3rem;margin:1rem 0}
+.camp-title{font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;font-weight:500;margin-bottom:.7rem}
+.camp-item{display:flex;gap:.6rem;margin-bottom:.6rem;align-items:flex-start}
+.camp-item:last-child{margin-bottom:0}
+.camp-dot{width:5px;height:5px;background:var(--gold);flex-shrink:0;margin-top:5px}
+.camp-item p{font-size:12px;color:rgba(255,255,255,.75);line-height:1.6;font-weight:300}
+.camp-item strong{color:var(--gold)}
+
+.dress-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:.6rem 0}
+.dress-box{background:var(--cream);padding:.7rem .9rem}
+.dk{font-size:10px;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:.25rem;font-weight:500}
+.dv{font-size:12px;color:var(--navy);line-height:1.5}
+
+.tags-row{display:flex;flex-wrap:wrap;gap:5px;margin:.8rem 0}
+.jtag{font-size:11px;color:var(--mid);background:var(--cream);padding:3px 9px;border-radius:2px}
+.jtag.hot{background:#fff3e0;color:#9a5f00;font-weight:500}
+
+.entry-area{margin-top:1.5rem;text-align:center;padding-bottom:.5rem}
+.entry-btn{display:inline-block;background:var(--gold);color:var(--navy);padding:14px 36px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border:none;font-family:'Barlow',sans-serif;text-decoration:none;transition:background .2s}
+.entry-btn:hover{background:#d9bc85}
+.entry-note{font-size:11px;color:var(--mid);margin-top:.6rem}
+
+.future-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:1rem 0}
+.future-box{background:var(--navy);padding:1rem;text-align:center}
+.future-val{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--gold);font-weight:300}
+.future-label{font-size:10px;color:rgba(255,255,255,.4);margin-top:3px;letter-spacing:1px}
+
+footer{background:var(--navy);padding:1.8rem 2rem;text-align:center;margin-top:0}
+footer p{font-size:11px;color:rgba(255,255,255,.3);letter-spacing:1px;line-height:1.8}
+footer .g{color:var(--gold)}
+
+@media(max-width:480px){
+  .hero h1{font-size:42px}
+  .charm-grid{grid-template-columns:1fr}
+  .dress-grid{grid-template-columns:1fr}
+  .stat-row{grid-template-columns:repeat(3,1fr)}
+  .acc-trigger{padding:1.2rem 1.2rem}
+  .acc-inner{padding:0 1.2rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-eyebrow">Brand Detail</div>
+  <div class="flag-row">
+    <div class="flag"><div class="fs r"></div><div class="fs w"></div><div class="fs r"></div><div class="fs w"></div><div class="fs r"></div><div class="fs w"></div></div>
+    <span class="flag-label">公式に星条旗を持つスニーカーブランド</span>
+  </div>
+  <h1>AUTRY<br><em>オートリー</em></h1>
+  <p class="hero-sub">American Heritage Sneaker / Texas 1982</p>
+  <p class="hero-lead">テキサス生まれ、ヨーロッパで進化した"幻のスニーカー"。GUCCIを率いたチームが復活させ、今世界で最も注目されるラグジュアリースニーカーブランドのひとつ。</p>
+</div>
+
+<nav class="sec-nav" id="secNav">
+  <div class="sec-nav-item active" onclick="scrollToAcc(0)">概要</div>
+  <div class="sec-nav-item" onclick="scrollToAcc(1)">歴史</div>
+  <div class="sec-nav-item" onclick="scrollToAcc(2)">魅力</div>
+  <div class="sec-nav-item" onclick="scrollToAcc(3)">代表アイテム</div>
+  <div class="sec-nav-item" onclick="scrollToAcc(4)">セレブ・メディア</div>
+  <div class="sec-nav-item" onclick="scrollToAcc(5)">ブランドの今</div>
+  <div class="sec-nav-item" onclick="scrollToAcc(6)">募集店舗</div>
+</nav>
+
+<!-- 01 ブランド概要 -->
+<div class="accordion" id="acc0">
+  <button class="acc-trigger open" onclick="toggle(0)">
+    <div class="acc-left">
+      <span class="acc-num">01</span>
+      <div><div class="acc-title">ブランド概要</div><div class="acc-sub">どんなブランド？</div></div>
+    </div>
+    <div class="acc-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+  </button>
+  <div class="acc-body open" id="body0">
+    <div class="acc-inner">
+      <p class="body-text">AUTRY（オートリー）は、1982年にアメリカ・テキサス州ダラスで誕生したスニーカーブランド。"The shoe with the American flag"のキャッチコピーで知られ、売上の一部をニューヨーク・自由の女神の修復費として寄付していることから、ブランドロゴに正式な星条旗の使用を認められた数少ないブランドのひとつ。</p>
+      <p class="body-text">ラグジュアリーブランドのDNAを持ちながら、スポーツシューズの快適さも兼ね備えた独自のポジションで、世界中のファッション感度の高い層から支持されている。</p>
+      <div class="stat-row">
+        <div class="stat-box"><div class="stat-num">1982</div><div class="stat-label">創業年</div></div>
+        <div class="stat-box"><div class="stat-num">40+</div><div class="stat-label">展開国数</div></div>
+        <div class="stat-box"><div class="stat-num">2019</div><div class="stat-label">欧州再始動</div></div>
+      </div>
+      <p class="body-text" style="font-size:12px;color:var(--mid)">カテゴリ：シューズ（スニーカー）／ Tシャツ・ソックス・キャップ等アパレルも展開</p>
+    </div>
+  </div>
+</div>
+
+<!-- 02 歴史 -->
+<div class="accordion" id="acc1">
+  <button class="acc-trigger" onclick="toggle(1)">
+    <div class="acc-left">
+      <span class="acc-num">02</span>
+      <div><div class="acc-title">歴史</div><div class="acc-sub">1982年〜現在までのストーリー</div></div>
+    </div>
+    <div class="acc-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+  </button>
+  <div class="acc-body" id="body1">
+    <div class="acc-inner">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div><div class="tl-year">1982</div><div class="tl-content"><h4>テキサス州ダラスで創業</h4><p>ランニング・エアロビクスブーム全盛期に誕生。星条旗ロゴで北米市場での認知を拡大。</p></div></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div><div class="tl-year">1985</div><div class="tl-content"><h4>MEDALISTリリース</h4><p>アメリカの雑誌でシューズマーケット最優秀賞に選出。ブランドを代表するアイコンモデルとなる。</p></div></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div><div class="tl-year">1990s</div><div class="tl-content"><h4>ブランド休止期</h4><p>約20年間、ヴィンテージ愛好家の間で"幻のスニーカー"として語り継がれる存在に。</p></div></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot now"></div>
+          <div><div class="tl-year">2019</div><div class="tl-content"><h4>ヨーロッパで完全復活</h4><p>GUCCI・BOTTEGA VENETA・CELINEのCEOを歴任したパトリツィオ・ディ・マルコがチェアマンに就任。イタリア投資会社がブランドを買収し、ラグジュアリー出身の精鋭チームが集結。</p></div></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot now"></div>
+          <div><div class="tl-year">2022</div><div class="tl-content"><h4>日本上陸・世界展開加速</h4><p>豊田貿易を通じ日本市場へ本格上陸。BTS・BLACKPINKが着用しK-POPファンを中心に爆発的な人気に。</p></div></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot now"></div>
+          <div><div class="tl-year">2025</div><div class="tl-content"><h4>伊勢丹新宿メンズ館 オープン</h4><p>日本最高峰のメンズファッション拠点・伊勢丹新宿に常設店舗をオープン。</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 03 魅力 -->
+<div class="accordion" id="acc2">
+  <button class="acc-trigger" onclick="toggle(2)">
+    <div class="acc-left">
+      <span class="acc-num">03</span>
+      <div><div class="acc-title">ブランドの魅力</div><div class="acc-sub">なぜ世界で売れているのか</div></div>
+    </div>
+    <div class="acc-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+  </button>
+  <div class="acc-body" id="body2">
+    <div class="acc-inner">
+      <div class="charm-grid">
+        <div class="charm-card">
+          <div class="charm-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+          <h4>ラグジュアリー素材</h4>
+          <p>カウレザー・スエード・ゴートスキンなど上質素材を使用。高級ブランドのスニーカーに匹敵するエレガントさ。</p>
+        </div>
+        <div class="charm-card">
+          <div class="charm-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <h4>星条旗ロゴの背景</h4>
+          <p>自由の女神修復に寄付を続け、公式に星条旗の使用を認められた数少ないブランド。ロゴひとつに物語がある。</p>
+        </div>
+        <div class="charm-card">
+          <div class="charm-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+          <h4>万能なスタイリング</h4>
+          <p>ジャケパンからデニム、スカートまで何でも合う。タキシードに合わせるセレブが続出するほどの汎用性。</p>
+        </div>
+        <div class="charm-card">
+          <div class="charm-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+          <h4>ヴィンテージ×モダン</h4>
+          <p>新品でも"こなれたベージュ"のソールカラー。レトロトレンドを先取りしつつ今っぽいシルエット。</p>
+        </div>
+        <div class="charm-card">
+          <div class="charm-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+          <h4>ジェンダーレスデザイン</h4>
+          <p>メンズ・レディース両展開。カップルでのペア使いも人気。15歳〜60代まで男女5:5の比率で支持される。</p>
+        </div>
+        <div class="charm-card">
+          <div class="charm-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h4>良心的な価格設定</h4>
+          <p>ラグジュアリーほど高くなく、スポーツブランドより上質。¥30,000前後という絶妙なポジション。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 04 代表アイテム -->
+<div class="accordion" id="acc3">
+  <button class="acc-trigger" onclick="toggle(3)">
+    <div class="acc-left">
+      <span class="acc-num">04</span>
+      <div><div class="acc-title">代表アイテム</div><div class="acc-sub">知っておきたい主要モデル</div></div>
+    </div>
+    <div class="acc-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+  </button>
+  <div class="acc-body" id="body3">
+    <div class="acc-inner">
+      <p class="body-text">接客時に必ず話題になる代表モデルを押さえておきましょう。</p>
+      <div class="item-list">
+        <div class="item-row">
+          <div><div class="item-name">MEDALIST</div><div class="item-desc">1985年誕生 / アイコンモデル</div></div>
+          <div class="item-price">¥31,900〜</div>
+        </div>
+        <div class="item-row">
+          <div><div class="item-name">DALLAS</div><div class="item-desc">創業の地を冠したシンプルモデル</div></div>
+          <div class="item-price">¥28,000〜</div>
+        </div>
+        <div class="item-row">
+          <div><div class="item-name">REELWIND</div><div class="item-desc">80年代ランニングシューズ復刻</div></div>
+          <div class="item-price">¥33,000〜</div>
+        </div>
+        <div class="item-row">
+          <div><div class="item-name">WINDSPIN</div><div class="item-desc">モダンシルエット更新版</div></div>
+          <div class="item-price">¥36,500〜</div>
+        </div>
+      </div>
+      <p class="body-text" style="font-size:12px;color:var(--mid);margin-top:.5rem">伊勢丹新宿店ではシューズに加え、Tシャツ・ソックス・キャップ等アパレルも展開予定。今後洋服取り扱いも拡大予定。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 05 セレブ・メディア -->
+<div class="accordion" id="acc4">
+  <button class="acc-trigger" onclick="toggle(4)">
+    <div class="acc-left">
+      <span class="acc-num">05</span>
+      <div><div class="acc-title">セレブリティ・メディア掲載</div><div class="acc-sub">誰が愛用？どこで話題？</div></div>
+    </div>
+    <div class="acc-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+  </button>
+  <div class="acc-body" id="body4">
+    <div class="acc-inner">
+      <p class="body-text">接客でブランドの話をする際に使えるエピソードです。</p>
+      <div class="celeb-tags">
+        <span class="ctag hl">BTS</span>
+        <span class="ctag hl">BLACKPINK</span>
+        <span class="ctag">ニコラ・ゲスキエール（LV）</span>
+        <span class="ctag">メットガラ着用</span>
+        <span class="ctag">ピッティウォモ</span>
+        <span class="ctag">WWDジャパン</span>
+        <span class="ctag">VOGUE Korea</span>
+      </div>
+      <div style="background:var(--cream);padding:1rem 1.2rem;border-left:2px solid var(--gold);margin:.8rem 0">
+        <p style="font-size:13px;font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--navy);line-height:1.7">"黒のタキシードに合わせてもいい、ショートパンツにラフに合わせてもいい。ビジネスとカジュアルを超えるハイブリッドなスタイル"</p>
+        <p style="font-size:11px;color:var(--mid);margin-top:.5rem;letter-spacing:1px">— 10 Corso Como ミラノ会長</p>
+      </div>
+      <p class="body-text" style="font-size:12px;color:var(--mid)">K-POPアイドルの着用をきっかけに韓国で爆発的に普及。その後ヨーロッパ・日本へと波及し、「かぶりたくないけど定番を探している」層を中心に支持を拡大。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 06 ブランドの今 -->
+<div class="accordion" id="acc5">
+  <button class="acc-trigger" onclick="toggle(5)">
+    <div class="acc-left">
+      <span class="acc-num">06</span>
+      <div><div class="acc-title">ブランドの今・将来性</div><div class="acc-sub">働く場所として選ぶ理由</div></div>
+    </div>
+    <div class="acc-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+  </button>
+  <div class="acc-body" id="body5">
+    <div class="acc-inner">
+      <p class="body-text">AUTRYは現在、既存のスポーツブランドとラグジュアリーブランドの中間という独自ポジションを確立。ファッションの最前線であるピッティウォモやメットガラでも存在感を示し、今まさに上昇曲線を描いている。</p>
+      <p class="body-text">日本では2022年に本格上陸したばかりで、伊勢丹新宿の常設店舗化はその大きな節目。今後、アパレルラインの強化や取り扱い店舗の拡大が見込まれ、ブランドの成長フェーズに最初から関われるタイミング。</p>
+      <div class="future-grid">
+        <div class="future-box"><div class="future-val">急上昇中</div><div class="future-label">世界的な注目度</div></div>
+        <div class="future-box"><div class="future-val">拡大フェーズ</div><div class="future-label">日本市場における展開</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 07 募集店舗 -->
+<div class="accordion" id="acc6">
+  <button class="acc-trigger" onclick="toggle(6)">
+    <div class="acc-left">
+      <span class="acc-num">07</span>
+      <div><div class="acc-title">募集店舗</div><div class="acc-sub">伊勢丹新宿メンズ館 / オープニング</div></div>
+    </div>
+    <div class="acc-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+  </button>
+  <div class="acc-body" id="body6">
+    <div class="acc-inner">
+      <div class="job-header-box">
+        <div class="job-badge">OPENING STAFF</div>
+        <div class="job-title-txt">ショップ販売スタッフ</div>
+        <div class="job-sub">Autry Japan 株式会社 ／ 伊勢丹新宿メンズ館</div>
+      </div>
+
+      <div class="tags-row">
+        <span class="jtag hot">オープニング 8月〜</span>
+        <span class="jtag">制服全身貸与</span>
+        <span class="jtag">ノルマなし</span>
+        <span class="jtag">週休2日</span>
+        <span class="jtag">正社員登用相談可</span>
+        <span class="jtag">外国籍OK</span>
+        <span class="jtag">髪色自由</span>
+        <span class="jtag">ネイル自由</span>
+      </div>
+
+      <table class="detail-table">
+        <tr><td class="dt-key">時給</td><td class="dt-val"><strong>未経験 ¥1,500〜 ／ 経験者 ¥1,650〜</strong><br><span style="font-size:11px;color:var(--mid)">経験1年以上はいきなり¥1,650スタート。1年後に必ず¥1,650へ昇給。</span></td></tr>
+        <tr><td class="dt-key">月収目安</td><td class="dt-val">23.6万〜25.9万円＋残業手当（7.5h×21日）</td></tr>
+        <tr><td class="dt-key">勤務地</td><td class="dt-val">伊勢丹新宿メンズ館（新宿三丁目 徒歩3分 ／ 新宿 徒歩8分）</td></tr>
+        <tr><td class="dt-key">スケジュール</td><td class="dt-val">8/19〜 POP UP スタート → <strong style="color:var(--navy)">9/23〜 常設店舗オープン</strong></td></tr>
+        <tr><td class="dt-key">勤務時間</td><td class="dt-val">実働7.5時間シフト制（休憩90分）</td></tr>
+        <tr><td class="dt-key">休日</td><td class="dt-val">週休2日シフト制</td></tr>
+        <tr><td class="dt-key">期間</td><td class="dt-val">3ヶ月以上の長期 ／ 正社員へのステップも相談可</td></tr>
+        <tr><td class="dt-key">交通費</td><td class="dt-val">全額支給</td></tr>
+        <tr><td class="dt-key">応募資格</td><td class="dt-val">アパレル業界での販売経験（半年以上）・コミュニケーション能力・レジ対応可能な方<br><span style="font-size:11px;color:var(--mid)">英語・中国語ができると尚可</span></td></tr>
+        <tr><td class="dt-key">服装</td><td class="dt-val">
+          <div class="dress-grid">
+            <div class="dress-box"><div class="dk">制服</div><div class="dv">Tシャツ・スウェット・パンツ・バンダナ・シューズ貸与</div></div>
+            <div class="dress-box"><div class="dk">髪色</div><div class="dv">清潔感あれば自由（百貨店規定内）</div></div>
+            <div class="dress-box"><div class="dk">ネイル</div><div class="dv">業務に支障なければアートもOK</div></div>
+            <div class="dress-box"><div class="dk">アクセ</div><div class="dv">制服に合うものはOK</div></div>
+          </div>
+        </td></tr>
+        <tr><td class="dt-key">主な業務</td><td class="dt-val">接客販売・フィッティング・ラッピング・レジ補助・商品陳列・在庫管理・店内美化など</td></tr>
+        <tr><td class="dt-key">研修</td><td class="dt-val">入店後、座学にてブランドの歴史・主力商品の説明あり。安心してスタートできます。</td></tr>
+      </table>
+
+      <div class="campaign-box">
+        <div class="camp-title">✦ スペシャルキャンペーン</div>
+        <div class="camp-item"><div class="camp-dot"></div><p><strong>キャリア手当10万円</strong>：同職種2年以上の経験×フルタイム勤務可能な方は全員対象。1ヶ月勤務後の給与に一括支給。</p></div>
+        <div class="camp-item"><div class="camp-dot"></div><p><strong>来社特典 ¥1,000ギフトカード</strong>：新宿オフィスでの登録会に参加された方にプレゼント。</p></div>
+      </div>
+
+      <div class="entry-area">
+        <a class="entry-btn" href="https://www.staff-b.com/detail/239063/" target="_blank" rel="noopener">求人詳細はこちらから ↗</a>
+        <p class="entry-note">※外部サイト（staff-b.com）に移動します</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p><span class="g">AUTRY</span> ／ Autry Japan 株式会社 ／ Brand Detail Page</p>
+  <p>© 2025 Staffing Agency — Brand Recruitment Guide</p>
+</footer>
+
+<script>
+const bodies = document.querySelectorAll('.acc-body');
+const triggers = document.querySelectorAll('.acc-trigger');
+const navItems = document.querySelectorAll('.sec-nav-item');
+
+function toggle(i) {
+  const isOpen = bodies[i].classList.contains('open');
+  bodies[i].classList.toggle('open', !isOpen);
+  triggers[i].classList.toggle('open', !isOpen);
+  updateNav();
+}
+
+function scrollToAcc(i) {
+  const el = document.getElementById('acc' + i);
+  el.scrollIntoView({behavior:'smooth', block:'start'});
+  if (!bodies[i].classList.contains('open')) {
+    bodies[i].classList.add('open');
+    triggers[i].classList.add('open');
+  }
+  updateNav();
+}
+
+function updateNav() {
+  bodies.forEach((b, i) => {
+    navItems[i].classList.toggle('active', b.classList.contains('open'));
+  });
+}
+
+// Scroll spy
+window.addEventListener('scroll', () => {
+  let current = 0;
+  document.querySelectorAll('.accordion').forEach((el, i) => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top <= 80) current = i;
+  });
+  navItems.forEach((item, i) => item.classList.toggle('active', i === current));
+}, {passive: true});
+</script>
+</body>
+</html>
