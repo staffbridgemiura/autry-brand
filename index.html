@@ -291,21 +291,75 @@ footer .g{color:var(--gold)}
     <div class="acc-inner">
       <p class="body-text">接客時に必ず話題になる代表モデルを押さえておきましょう。</p>
       <div class="item-list">
-        <div class="item-row">
-          <div><div class="item-name">MEDALIST</div><div class="item-desc">1985年誕生 / アイコンモデル</div></div>
-          <div class="item-price">¥31,900〜</div>
+
+        <div class="item-row" onclick="toggleItem('medalist')" style="cursor:pointer;flex-direction:column;align-items:stretch;gap:0;padding:0">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:1rem 1.2rem">
+            <div><div class="item-name">MEDALIST</div><div class="item-desc">1985年誕生 / アイコンモデル</div></div>
+            <div style="display:flex;align-items:center;gap:12px">
+              <div class="item-price">¥31,900〜</div>
+              <div id="arrow-medalist" style="width:18px;height:18px;transition:transform .3s;flex-shrink:0"><svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:#c8a96e;fill:none;stroke-width:1.5"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </div>
+          </div>
+          <div id="item-medalist" style="max-height:0;overflow:hidden;transition:max-height .4s ease">
+            <div style="border-top:1px solid rgba(200,169,110,0.22)">
+              <img src="medalist.png" alt="AUTRY MEDALIST" style="width:100%;display:block;object-fit:cover;max-height:280px">
+              <div style="padding:1.2rem;background:#ede9df">
+                <p style="font-size:13px;line-height:1.85;color:#4a4842;font-weight:300">Autry Medalistは、エッセンシャルでリラックス感のあるデザインが魅力のスニーカー。1980年代のテニススタイルを思わせるスポーティなシルエットに、ヴィンテージ感と上質なラグジュアリーを融合し、デイリーからスマートカジュアルまで幅広いスタイルに自然に馴染む一足。ロゴ入りの同色ラバーソール、パッド入り履き口、つま先には通気性のいいパンチング加工を配し、細部まで快適さと機能美を追求しました。</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="item-row">
-          <div><div class="item-name">DALLAS</div><div class="item-desc">創業の地を冠したシンプルモデル</div></div>
-          <div class="item-price">¥28,000〜</div>
+
+        <div class="item-row" onclick="toggleItem('dallas')" style="cursor:pointer;flex-direction:column;align-items:stretch;gap:0;padding:0">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:1rem 1.2rem">
+            <div><div class="item-name">DALLAS</div><div class="item-desc">創業の地を冠したシンプルモデル</div></div>
+            <div style="display:flex;align-items:center;gap:12px">
+              <div class="item-price">¥28,000〜</div>
+              <div id="arrow-dallas" style="width:18px;height:18px;transition:transform .3s;flex-shrink:0"><svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:#c8a96e;fill:none;stroke-width:1.5"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </div>
+          </div>
+          <div id="item-dallas" style="max-height:0;overflow:hidden;transition:max-height .4s ease">
+            <div style="border-top:1px solid rgba(200,169,110,0.22)">
+              <img src="dallas.png" alt="AUTRY DALLAS" style="width:100%;display:block;object-fit:cover;max-height:280px">
+              <div style="padding:1.2rem;background:#ede9df">
+                <p style="font-size:13px;line-height:1.85;color:#4a4842;font-weight:300">Dallasスニーカーは、クラシックで本格的なデザインにより、控えめな上質さとカジュアルな雰囲気を演出します。ミニマルなシルエットとホワイトレザーのアッパーに、ステッチのアクセントとカラーヒールが映えます。深みのあるラバーソールが洗練されたヴィンテージ感をプラス。Autryのスピリットとシンプルさの美学を体現した一足です。</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="item-row">
-          <div><div class="item-name">REELWIND</div><div class="item-desc">80年代ランニングシューズ復刻</div></div>
-          <div class="item-price">¥33,000〜</div>
+        <div class="item-row" onclick="toggleItem('reelwind')" style="cursor:pointer;flex-direction:column;align-items:stretch;gap:0;padding:0">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:1rem 1.2rem">
+            <div><div class="item-name">REELWIND</div><div class="item-desc">80年代ランニングシューズ復刻</div></div>
+            <div style="display:flex;align-items:center;gap:12px">
+              <div class="item-price">¥33,000〜</div>
+              <div id="arrow-reelwind" style="width:18px;height:18px;transition:transform .3s;flex-shrink:0"><svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:#c8a96e;fill:none;stroke-width:1.5"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </div>
+          </div>
+          <div id="item-reelwind" style="max-height:0;overflow:hidden;transition:max-height .4s ease">
+            <div style="border-top:1px solid rgba(200,169,110,0.22)">
+              <img src="reelwind.png" alt="AUTRY REELWIND" style="width:100%;display:block;object-fit:cover;max-height:280px">
+              <div style="padding:1.2rem;background:#ede9df">
+                <p style="font-size:13px;line-height:1.85;color:#4a4842;font-weight:300">Reelwindは、Autryならではのヴィンテージ感にランニングの機能性を融合。80年代を思わせるスリムなシルエットとレトロなデザインが特徴です。軽やかさと柔軟性、優れたグリップで日常に快適さをプラス。上質な素材のコンビネーションが、シンプルさと革新性を引き立てます。</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="item-row">
-          <div><div class="item-name">WINDSPIN</div><div class="item-desc">モダンシルエット更新版</div></div>
-          <div class="item-price">¥36,500〜</div>
+        <div class="item-row" onclick="toggleItem('windspin')" style="cursor:pointer;flex-direction:column;align-items:stretch;gap:0;padding:0">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:1rem 1.2rem">
+            <div><div class="item-name">WINDSPIN</div><div class="item-desc">モダンシルエット更新版</div></div>
+            <div style="display:flex;align-items:center;gap:12px">
+              <div class="item-price">¥36,500〜</div>
+              <div id="arrow-windspin" style="width:18px;height:18px;transition:transform .3s;flex-shrink:0"><svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:#c8a96e;fill:none;stroke-width:1.5"><polyline points="6 9 12 15 18 9"/></svg></div>
+            </div>
+          </div>
+          <div id="item-windspin" style="max-height:0;overflow:hidden;transition:max-height .4s ease">
+            <div style="border-top:1px solid rgba(200,169,110,0.22)">
+              <img src="windspin.png" alt="AUTRY WINDSPIN" style="width:100%;display:block;object-fit:cover;max-height:280px">
+              <div style="padding:1.2rem;background:#ede9df">
+                <p style="font-size:13px;line-height:1.85;color:#4a4842;font-weight:300">Autry Windspinは、アメリカン・ドリームの精神にイタリアらしい洗練を融合させた、ブランドの新たなアイコンモデルです。柔らかなスエードにヴィンテージ感を纏い、洗練された細身のシルエットです。超フラットなラバーソールは、都会のあらゆる路面で優れたグリップ力を発揮します。</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <p class="body-text" style="font-size:12px;color:var(--mid);margin-top:.5rem">伊勢丹新宿店ではシューズに加え、Tシャツ・ソックス・キャップ等アパレルも展開予定。今後洋服取り扱いも拡大予定。</p>
@@ -459,6 +513,14 @@ function updateNav() {
   bodies.forEach((b, i) => {
     navItems[i].classList.toggle('active', b.classList.contains('open'));
   });
+}
+
+function toggleItem(id) {
+  const el = document.getElementById('item-' + id);
+  const arrow = document.getElementById('arrow-' + id);
+  const isOpen = el.style.maxHeight !== '0px' && el.style.maxHeight !== '';
+  el.style.maxHeight = isOpen ? '0px' : '800px';
+  arrow.style.transform = isOpen ? '' : 'rotate(180deg)';
 }
 
 // Scroll spy
