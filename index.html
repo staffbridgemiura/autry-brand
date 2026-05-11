@@ -14,8 +14,8 @@
   --gold:#c8a96e;--red:#c0392b;--mid:#6b6860;
   --border:rgba(200,169,110,0.22);
 }
-html{scroll-behavior:smooth}
-body{background:var(--off);font-family:'Shippori Mincho',serif;color:var(--navy);max-width:900px;margin:0 auto}
+html{scroll-behavior:smooth;width:100%;margin:0;padding:0}
+body{background:var(--off);font-family:'Shippori Mincho',serif;color:var(--navy);width:100%;max-width:100%;margin:0;padding:0}
 
 /* HERO */
 .hero{background:var(--navy);padding:3.5rem 2rem 2.5rem;position:relative;overflow:hidden}
@@ -52,7 +52,7 @@ body{background:var(--off);font-family:'Shippori Mincho',serif;color:var(--navy)
 .acc-trigger.open .acc-arrow{transform:rotate(180deg)}
 .acc-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
 .acc-body.open{max-height:3000px}
-.acc-inner{padding:0 2rem 2rem;border-top:1px solid var(--border)}
+.acc-inner{padding:0 4rem 2rem;border-top:1px solid var(--border)}
 
 /* CONTENT */
 .body-text{font-size:14px;line-height:1.9;color:#4a4842;font-weight:300;margin-bottom:1rem}
@@ -134,7 +134,7 @@ footer{background:var(--navy);padding:1.8rem 2rem;text-align:center;margin-top:0
 footer p{font-size:11px;color:rgba(255,255,255,.3);letter-spacing:1px;line-height:1.8}
 footer .g{color:var(--gold)}
 
-@media(max-width:480px){
+@media(max-width:480px){.acc-inner{padding:0 1.2rem 1.5rem!important}
   .hero h1{font-size:42px}
   .charm-grid{grid-template-columns:1fr}
   .dress-grid{grid-template-columns:1fr}
