@@ -15,7 +15,7 @@
   --border:rgba(200,169,110,0.22);
 }
 html{scroll-behavior:smooth}
-body{background:var(--off);font-family:'Barlow',sans-serif;color:var(--navy);max-width:680px;margin:0 auto}
+body{background:var(--off);font-family:'Jost',sans-serif;color:var(--navy);max-width:900px;margin:0 auto}
 
 /* HERO */
 .hero{background:var(--navy);padding:3.5rem 2rem 2.5rem;position:relative;overflow:hidden}
@@ -121,7 +121,7 @@ body{background:var(--off);font-family:'Barlow',sans-serif;color:var(--navy);max
 .jtag.hot{background:#fff3e0;color:#9a5f00;font-weight:500}
 
 .entry-area{margin-top:1.5rem;text-align:center;padding-bottom:.5rem}
-.entry-btn{display:inline-block;background:var(--gold);color:var(--navy);padding:14px 36px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border:none;font-family:'Barlow',sans-serif;text-decoration:none;transition:background .2s}
+.entry-btn{display:inline-block;background:var(--gold);color:var(--navy);padding:14px 36px;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border:none;font-family:'Jost',sans-serif;text-decoration:none;transition:background .2s}
 .entry-btn:hover{background:#d9bc85}
 .entry-note{font-size:11px;color:var(--mid);margin-top:.6rem}
 
@@ -146,15 +146,63 @@ footer .g{color:var(--gold)}
 </head>
 <body>
 
-<div class="hero">
-  <div class="hero-eyebrow">Brand Detail</div>
-  <div class="flag-row">
-    <div class="flag"><div class="fs r"></div><div class="fs w"></div><div class="fs r"></div><div class="fs w"></div><div class="fs r"></div><div class="fs w"></div></div>
-    <span class="flag-label">公式に星条旗を持つスニーカーブランド</span>
+<div class="hero" style="padding:0;min-height:100vh;display:flex;flex-direction:column;position:relative;overflow:hidden">
+  <!-- 背景画像グループ -->
+  <div style="position:absolute;inset:0;z-index:0">
+    <img src="hero_group.png" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center top;opacity:0.45">
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(10,14,26,0.55) 0%, rgba(10,14,26,0.3) 40%, rgba(10,14,26,0.85) 100%)"></div>
   </div>
-  <h1>AUTRY<br><em>オートリー</em></h1>
-  <p class="hero-sub">American Heritage Sneaker / Texas 1982</p>
-  <p class="hero-lead">テキサス生まれ、ヨーロッパで進化した"幻のスニーカー"。GUCCIを率いたチームが復活させ、今世界で最も注目されるラグジュアリースニーカーブランドのひとつ。</p>
+
+  <!-- コンテンツ -->
+  <div style="position:relative;z-index:1;display:flex;flex-direction:column;justify-content:space-between;min-height:100vh;padding:2.5rem 2.5rem 3rem">
+
+    <!-- 上部：ロゴ -->
+    <div style="display:flex;justify-content:center;padding-top:1rem">
+      <img src="autry_logo.png" alt="AUTRY" style="height:36px;filter:invert(1);opacity:0.9">
+    </div>
+
+    <!-- 中央：メインコピー -->
+    <div style="text-align:center;padding:2rem 0">
+      <div style="font-size:10px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;font-weight:400;margin-bottom:1.2rem">Brand Detail — Staff Guide 2025</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(52px,12vw,96px);font-weight:300;color:#fff;line-height:0.9;letter-spacing:-2px;margin-bottom:.5rem">AUTRY</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(18px,4vw,28px);font-style:italic;color:var(--gold);font-weight:300;letter-spacing:2px;margin-bottom:1.5rem">オートリー</div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:2rem">
+        <div style="width:40px;height:1px;background:var(--gold);opacity:.6"></div>
+        <div style="font-size:11px;color:rgba(255,255,255,.5);letter-spacing:3px;text-transform:uppercase;font-weight:300">American Heritage Since 1982</div>
+        <div style="width:40px;height:1px;background:var(--gold);opacity:.6"></div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:8px">
+        <div style="display:flex;flex-direction:column;width:26px;height:16px;border-radius:2px;overflow:hidden;flex-shrink:0">
+          <div style="height:2.67px;background:#c0392b"></div><div style="height:2.67px;background:#fff"></div>
+          <div style="height:2.67px;background:#c0392b"></div><div style="height:2.67px;background:#fff"></div>
+          <div style="height:2.67px;background:#c0392b"></div><div style="height:2.67px;background:#fff"></div>
+        </div>
+        <span style="font-size:11px;color:rgba(255,255,255,.4);letter-spacing:1.5px">公式に星条旗を持つ唯一のスニーカーブランド</span>
+      </div>
+    </div>
+
+    <!-- 下部：スタッツ -->
+    <div style="display:flex;justify-content:center;gap:0;border-top:1px solid rgba(255,255,255,.12);padding-top:1.5rem">
+      <div style="flex:1;text-align:center;border-right:1px solid rgba(255,255,255,.1);padding:.5rem">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--gold)">1982</div>
+        <div style="font-size:9px;color:rgba(255,255,255,.35);letter-spacing:2px;text-transform:uppercase;margin-top:2px">創業年</div>
+      </div>
+      <div style="flex:1;text-align:center;border-right:1px solid rgba(255,255,255,.1);padding:.5rem">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--gold)">40+</div>
+        <div style="font-size:9px;color:rgba(255,255,255,.35);letter-spacing:2px;text-transform:uppercase;margin-top:2px">展開国数</div>
+      </div>
+      <div style="flex:1;text-align:center;padding:.5rem">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--gold)">2025</div>
+        <div style="font-size:9px;color:rgba(255,255,255,.35);letter-spacing:2px;text-transform:uppercase;margin-top:2px">日本法人設立</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ビジュアル帯：スケーターとカップル -->
+<div style="display:grid;grid-template-columns:1fr 1fr;height:280px;overflow:hidden">
+  <img src="hero_skate.png" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center top">
+  <img src="hero_couple.png" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center top">
 </div>
 
 <nav class="sec-nav" id="secNav">
@@ -321,7 +369,7 @@ footer .g{color:var(--gold)}
           </div>
           <div id="item-dallas" style="max-height:0;overflow:hidden;transition:max-height .4s ease">
             <div style="border-top:1px solid rgba(200,169,110,0.22)">
-              <img src="dallas.png" alt="AUTRY DALLAS" style="width:100%;display:block;object-fit:cover;max-height:280px">
+              <img src="dallas2.png" alt="AUTRY DALLAS" style="width:100%;display:block;object-fit:cover;max-height:280px">
               <div style="padding:1.2rem;background:#ede9df">
                 <p style="font-size:13px;line-height:1.85;color:#4a4842;font-weight:300">Dallasスニーカーは、クラシックで本格的なデザインにより、控えめな上質さとカジュアルな雰囲気を演出します。ミニマルなシルエットとホワイトレザーのアッパーに、ステッチのアクセントとカラーヒールが映えます。深みのあるラバーソールが洗練されたヴィンテージ感をプラス。Autryのスピリットとシンプルさの美学を体現した一足です。</p>
               </div>
@@ -355,7 +403,7 @@ footer .g{color:var(--gold)}
           </div>
           <div id="item-windspin" style="max-height:0;overflow:hidden;transition:max-height .4s ease">
             <div style="border-top:1px solid rgba(200,169,110,0.22)">
-              <img src="windspin.png" alt="AUTRY WINDSPIN" style="width:100%;display:block;object-fit:cover;max-height:280px">
+              <img src="windspin2.png" alt="AUTRY WINDSPIN" style="width:100%;display:block;object-fit:cover;max-height:280px">
               <div style="padding:1.2rem;background:#ede9df">
                 <p style="font-size:13px;line-height:1.85;color:#4a4842;font-weight:300">Autry Windspinは、アメリカン・ドリームの精神にイタリアらしい洗練を融合させた、ブランドの新たなアイコンモデルです。柔らかなスエードにヴィンテージ感を纏い、洗練された細身のシルエットです。超フラットなラバーソールは、都会のあらゆる路面で優れたグリップ力を発揮します。</p>
               </div>
@@ -499,11 +547,11 @@ footer .g{color:var(--gold)}
         <p style="font-size:14px;font-weight:600;color:var(--navy);margin-bottom:.3rem">WWD JAPAN vol.2471（2026年5月11日号）</p>
         <p style="font-size:12px;color:var(--mid)">"スニーカーブランド"から"プレミアムライフスタイルブランド"へ ― 日本法人を立ち上げた「オートリー」の展開戦略</p>
       </div>
-      <div style="border:1px solid var(--border);background:#fff;padding:.5rem">
-        <embed src="wwd_autry.pdf" type="application/pdf" width="100%" height="600px" style="display:block">
-        <div style="margin-top:.8rem;text-align:center">
-          <a href="wwd_autry.pdf" target="_blank" style="font-size:12px;color:var(--gold);text-decoration:none;letter-spacing:1px;font-weight:500">↗ PDFを別タブで開く</a>
-        </div>
+      <div style="border:1px solid var(--border);overflow:hidden">
+        <iframe src="wwd_autry.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH" width="100%" height="700px" style="display:block;border:none"></iframe>
+      </div>
+      <div style="margin-top:.8rem;text-align:center">
+        <a href="wwd_autry.pdf" target="_blank" style="font-size:12px;color:var(--gold);text-decoration:none;letter-spacing:1px;font-weight:500">↗ PDFを別タブで開く</a>
       </div>
     </div>
   </div>
